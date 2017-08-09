@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Login</title>
+
+<link rel='stylesheet' th:href="@{/css/login.css}" />
+<link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' type='text/css' />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Exo' type='text/css' />
+</head>
+
+
+<body >
+
+	<div class="wrapper">		
+
+		<form name="f" th:action="@{/login}" method="post" class="form-signin">
+
+			<h4 class="form-signin-heading" style="color: #5CB85C">Sign in</h4>	
+
+			<div th:if="${param.error}" class="alert alert-danger">
+				<p th:text="#{prop.login.error}"></p>
+			</div>
+
+			<div th:if="${param.logout}" class="alert alert-success">Loged out</div>
+
+			<label for="username" class="sr-only">
+			<p th:text="#{prop.uzytkownik}"></p>
+			</label>
+			
+			 <input type="text" id="username"
+				name="username" class="form-control" placeholder="email"
+				required="true" /> 
+				
+				<label for="password" class="sr-only">
+				<p th:text="#{prop.haslo}"></p>
+				</label> 
+				
+			<input type="password" id="password"
+				name="password" class="form-control" placeholder="password"
+				required="true" />
+				<br/>
+			<a href="/forgot">Forgot password?</a>
+				 
+		    <!-- 
+			<div class="checkbox">
+		        <label>
+		            <input id="remember-me" name="remember-me" type="checkbox" /> Remember me
+		        </label>
+		    </div>
+		    -->
+
+			<button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+			<p class="text-center" style="margin-top:10px;">OR</p>
+			
+			<!-- 
+			<a class="btn btn-default btn-block" href="/githublogin">
+			<i class="icon-github"></i> Login with Github</a>
+			 -->
+			
+			<a class="btn btn-default btn-block" href="/register">
+			<i class="icon-github"></i> Register for an account</a>
+			<!-- 
+			 <hr/>
+			 -->
+			
+			<br/>
+			<div id="centered">
+			<p th:utext="${message}">Message</p>
+			</div>
+			
+			<!-- 
+			<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+			 -->
+			
+			<br/>
+			<!-- 
+			<hr/>
+			<p class="text-center"><a href="/register">Register for an account?</a></p>
+			 -->
+			
+		<br/>
+
+			
+		</form>
+		
+		
+		
+
+	</div>
+
+
+
+
+
+
+</body>
+</html>

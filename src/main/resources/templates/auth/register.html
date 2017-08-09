@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Register an account</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test4Test registration</title>
+
+<link rel="stylesheet" th:href="@{/css/blog.css}" />
+<link rel="stylesheet" th:href="@{/css/login.css}" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+<link href='https://fonts.googleapis.com/css?family=Roboto'
+	rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Exo'
+	rel='stylesheet' type='text/css' />
+
+<style type="text/css">
+#pati {
+	padding-top: 200px;
+	color: #006039;
+}
+
+
+.wielki{
+font-size: 550%;
+}
+
+
+
+
+#disclaimer {
+    text-align: center;
+    font-size: 80%;
+    color: #A9A9A9;
+}
+
+#alreadyamember{
+    text-align: center;
+    font-size: 100%;
+
+}
+#signin{
+    font-size: 200%;
+}
+
+
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}
+</style>
+
+
+</head>
+<body >
+
+	<div class="wrapper">
+	
+		<form action="#" th:action="@{/register}" th:object="${userDTO4Registration}"
+		 th:method="post" id="formularz" class="form-signin">
+
+			<h4 class="form-signin-heading" style="color: #5CB85C">Register new account</h4>
+
+			<div th:if="${param.error}" class="alert alert-danger">
+				<p th:text="error"></p>
+			</div>
+
+			<input id="username" type="text" class="form-control" th:field="*{username}" placeholder="username"/> 
+			<font color="orange"> 
+			<label th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Something is not right</label>
+			</font>
+		
+			<input id="email" type="text" class="form-control" th:field="*{email}" placeholder="email"/> 		
+			<font color="orange"> 
+			<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Something is not right</label>
+			</font>
+		
+			<input id="password" type="password" class="form-control" th:field="*{password}" placeholder="password"/>
+			<font color="orange"> 
+			<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Something is not right</label>
+			</font>
+	
+			<button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+			
+			
+			<br/>
+
+			<div id="disclaimer">By clicking 'Register', you agree to our <a href="/terms">terms of service</a> and <a href="/terms">privacy policy.</a></div>
+			
+			<hr/>
+			<div id="alreadyamember">Already a member? <br/>
+			
+			<div id="signin">
+			<a href="/login">Sign in</a>
+			</div>
+			</div>
+		</form>
+
+
+
+
+
+	</div>
+</body>
+</html>
